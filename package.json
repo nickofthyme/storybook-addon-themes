@@ -32,7 +32,7 @@
   "main": "dist/react.js",
   "types": "dist/react.d.ts",
   "scripts": {
-    "prepare": "node ./scripts/prepare.js"
+    "build": "node ./scripts/prepare.js"
   },
   "dependencies": {
     "@storybook/addons": "^6.0.0",
