@@ -37,7 +37,7 @@ const createThemeSelectorItem = memoize(1000)(
 
 const getDisplayableState = memoize(10)(
   (config: ThemeConfig, state: ThemeToolState, change) => {
-    const { clearable, list, target, default: defaultTheme } = config;
+    const { clearable, icon, list, target, default: defaultTheme } = config;
     const selectedThemeName = getSelectedThemeName(list, defaultTheme, state.selected);
 
     let availableThemeSelectorItems: ThemeSelectorItem[] = [];
@@ -60,6 +60,7 @@ const getDisplayableState = memoize(10)(
     }
 
     return {
+      icon,
       items: availableThemeSelectorItems,
       selectedTheme,
       themes: list,
@@ -114,7 +115,7 @@ export const ThemeSelector: FC<ThemeToolProps> = ({ api }) => {
     setSelected(args.selected);
   };
 
-  const { items, selectedTheme, target, themes } = getDisplayableState(
+  const { items, icon, selectedTheme, target, themes } = getDisplayableState(
     themesConfig,
     {
       decorator,
@@ -159,7 +160,7 @@ export const ThemeSelector: FC<ThemeToolProps> = ({ api }) => {
           active={selectedTheme}
           title="Change the theme of the preview"
         >
-          <Icons icon="photo" />
+          <Icons icon={icon} />
         </IconButton>
       </WithTooltip>
     </Fragment>
